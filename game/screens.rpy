@@ -87,84 +87,98 @@ screen inventory_screen():
     # Add a solid color overlay to make the background opaque
     add "black.png"  # Replace "opaque_background.png" with your desired overlay image
 
-    frame:
-        xalign 0.1  # Move the frame to the left
+    
+    # xalign 0.1  # Move the frame to the left
+    # yalign 0.5
+    # xsize 1140
+    # ysize 871
+
+    # Conditional statement to set background based on active_set
+    if active_set == "set1":
+        add "frame_item.png":
+            xalign 0.3  # Move the frame to the left
+            yalign 0.5
+    elif active_set == "gallery":
+        add "frame_gallery.png":
+            xalign 0.3  # Move the frame to the left
+            yalign 0.5
+    elif active_set == "cg":
+        add "frame_cg1.png":
+            xalign 0.3  # Move the frame to the left
+            yalign 0.5
+    hbox:
+        xalign 0.9
+        yalign 0.05
+        imagebutton idle "btn_close.png" action Return()
+
+    # Separate vbox for each set
+    if active_set == "gallery":
+        $ items_per_row = 3
+        $ items_per_column = 2
+    elif active_set == "cg":
+        $ items_per_row = 1
+        $ items_per_column = 4
+    elif active_set == "set1":
+        $ items_per_row = 5
+        $ items_per_column = 3
+    else:
+        $ items_per_row = 2
+        $ items_per_column = 3
+
+    vbox:
+        xalign 0.93
+        yalign 0.7
+        # spacing 5
+
+        imagebutton idle "btn_item_defalut.png" hover "btn_item_hover.png" action [SetVariable("active_set", "set1"), SetVariable("active_tab", "tab1")]:
+            # xpos 900
+            ypos 130
+            # xalign 1.0 
+            # yalign 1.0
+        imagebutton idle "btn_gallery_default.png" hover "btn_gallery_default-1.png" action [SetVariable("active_set", "gallery"), SetVariable("active_tab", "tab1")]:
+            ypos 65
+            # xalign 1.7 
+            # yalign 1.0
+        imagebutton idle "btn_cg_default.png" hover "btn_cg_hover.png" action [SetVariable("active_set", "cg"), SetVariable("active_tab", "tab1")]:
+            xalign 1.7 
+            yalign 1.0
+
+    # Define gallery tabs
+    if active_set == "gallery":
+        vbox id "gallery_tabs":
+            hbox:
+                spacing 10
+                ypos -1.16 # Adjust this value to move the gallery tabs up or down
+                xpos 0.2
+
+                # Gallery Tab 1
+                imagebutton idle "btn_summer_default.png" hover "btn_summer_pressed.png" action [SetVariable("active_tab", "tab1")]
+                
+                # Gallery Tab 2
+                imagebutton idle "btn_autumn_default.png" hover "btn_autumn_pressed.png" action [SetVariable("active_tab", "tab2")]
+
+                # Gallery Tab 3
+                imagebutton idle "btn_winter_default.png" hover "btn_winter_pressed.png" action [SetVariable("active_tab", "tab3")]
+
+                # Gallery Tab 4
+                imagebutton idle "btn_spring_default.png" hover "btn_spring_pressed.png" action [SetVariable("active_tab", "tab4")]
+
+    viewport:
+        spacing 20
+        xalign 0.35
         yalign 0.5
-        xsize 1140
-        ysize 871
-
-        # Conditional statement to set background based on active_set
-        if active_set == "set1":
-            add "frame_item.png"
-        elif active_set == "gallery":
-            add "frame_gallery.png"
-        elif active_set == "cg":
-            add "frame_cg1.png"
-
-        hbox:
-            xalign 1.45
-            yalign -0.08
-            imagebutton idle "btn_close.png" action Return()
-
-        # Separate vbox for each set
-        if active_set == "gallery":
-            $ items_per_row = 3
-            $ items_per_column = 2
-        elif active_set == "cg":
-            $ items_per_row = 1
-            $ items_per_column = 4
-        elif active_set == "set1":
-            $ items_per_row = 5
-            $ items_per_column = 3
-        else:
-            $ items_per_row = 2
-            $ items_per_column = 3
-
+        scrollbars "both"
+        child_size(1200,2000)
+        side_spacing 2
+        viewport_xsize 1200
+        viewport_ysize 600
         vbox:
-            xalign 1.56
-            yalign 0.9
-            # spacing 5
-
-            imagebutton idle "btn_item_defalut.png" hover "btn_item_hover.png" action [SetVariable("active_set", "set1"), SetVariable("active_tab", "tab1")]:
-                # xpos 900
-                ypos 130
-                # xalign 1.0 
-                # yalign 1.0
-            imagebutton idle "btn_gallery_default.png" hover "btn_gallery_default-1.png" action [SetVariable("active_set", "gallery"), SetVariable("active_tab", "tab1")]:
-                ypos 65
-                # xalign 1.7 
-                # yalign 1.0
-            imagebutton idle "btn_cg_default.png" hover "btn_cg_hover.png" action [SetVariable("active_set", "cg"), SetVariable("active_tab", "tab1")]:
-                xalign 1.7 
-                yalign 1.0
-
-        # Define gallery tabs
-        if active_set == "gallery":
-            vbox id "gallery_tabs":
-                hbox:
-                    spacing 10
-                    ypos -1.16 # Adjust this value to move the gallery tabs up or down
-                    xpos 0.2
-
-                    # Gallery Tab 1
-                    imagebutton idle "btn_summer_default.png" hover "btn_summer_pressed.png" action [SetVariable("active_tab", "tab1")]
-                    
-                    # Gallery Tab 2
-                    imagebutton idle "btn_autumn_default.png" hover "btn_autumn_pressed.png" action [SetVariable("active_tab", "tab2")]
-
-                    # Gallery Tab 3
-                    imagebutton idle "btn_winter_default.png" hover "btn_winter_pressed.png" action [SetVariable("active_tab", "tab3")]
-
-                    # Gallery Tab 4
-                    imagebutton idle "btn_spring_default.png" hover "btn_spring_pressed.png" action [SetVariable("active_tab", "tab4")]
-
-        vbox:
-            spacing 20
 
             $ items_count = len(image_button_images[active_set][active_tab])
             $ rows_count = (items_count - 1) // items_per_column + 1
 
             for row_index in range(rows_count):
+            # for row_index in range(5):
                 hbox:
                     spacing 20
                     # Loop through columns within the row
@@ -199,7 +213,7 @@ screen inventory_screen():
 
                                         # Add more conditions for other tabs if needed
 
-                                xysize (350, 250)
+                                xysize (380, 250)
                                 if achievement.has(item_name):
                                     imagebutton idle image_dict["idle"] hover image_dict["hover"] action Show("item_description_popup",item_click_background=item_background, description=item_description):
                                         xalign 0.5

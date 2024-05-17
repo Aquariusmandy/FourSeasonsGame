@@ -311,6 +311,20 @@ init python:
                         "frame_walkietalkie.png", #Croissant doesn't have this?
                         "You bought this keychain because it reminded you of Zali's love for quasos.")
 
+    drink = Item("drink", 
+                        "images/UI_inventory/item/btn/btn_drink_default.png",
+                        "images/UI_inventory/item/btn/btn_drink_hover.png",
+                        "images/UI_inventory/item/btn/btn_drink_locked.png",
+                        "frame_drink.png", 
+                        "You purchased this sparkling drink, and it reminded you of Uki's mysterious eyes. You put the drink in the fridge in A.S.H.'s lab.")
+
+    takoyaki = Item("takoyaki", 
+                        "images/UI_inventory/item/btn/btn_takoyaki_default.png",
+                        "images/UI_inventory/item/btn/btn_takoyaki_hover.png",
+                        "images/UI_inventory/item/btn/btn_takoyaki_locked.png",
+                        "frame_takoyaki.png", 
+                        "The girl you saved gave you some takoyaki after the fight, they tasted yummy but you wonder where the ingredients came from. ")
+
     walkietalkie = Item("walkietalkie", 
                         "images/UI_inventory/item/btn/btn_walkietalkie_default.png",
                         "images/UI_inventory/item/btn/btn_walkietalkie_hover.png",
@@ -324,12 +338,21 @@ init python:
                     "images/UI_inventory/item/btn/btn_mushroom_locked.png",
                     "frame_mushroom.png", 
                     "The mushrooms you picked up on the mountain exude an intriguing scent and boast a surprisingly pleasant flavor, leaving you puzzled yet delighted by their familiar taste.")
-    
+
+    mapleleaf = Item("mapleleaf", 
+                    "images/UI_inventory/item/btn/btn_mapleleaf_default.png",
+                    "images/UI_inventory/item/btn/btn_mapleleaf_hover.png",
+                    "images/UI_inventory/item/btn/btn_mapleleaf_locked.png",
+                    "frame_mapleleaf.png", 
+                    "A gift from the grateful villagers, crafted locally with the utmost care. Its exquisite aroma tantalizes the senses, promising a sweet indulgence unparalleled by any other maple syrup aficionado.")    
 
     # try to use achievement to implement the "lock item" function
     achievement.register('croissant')
+    achievement.register('drink')
+    achievement.register('takoyaki')
     achievement.register('walkietalkie')
     achievement.register('mushroom')
+    achievement.register('mapleleaf')
 
 
     # obtain items
@@ -362,11 +385,20 @@ init python:
         "set1": {
             "tab1": [
                 {"name": croissant.name, "idle": croissant.idle, "hover": croissant.hover, "locked": croissant.locked, "background":croissant.background,"description":croissant.description},
+                {"name": drink.name, "idle": drink.idle, "hover": drink.hover, "locked": drink.locked, "background":drink.background,"description":drink.description},
+                {"name": takoyaki.name, "idle": takoyaki.idle, "hover": takoyaki.hover, "locked": takoyaki.locked, "background":takoyaki.background,"description":takoyaki.description},
                 {"name": walkietalkie.name, "idle": walkietalkie.idle, "hover": walkietalkie.hover, "locked":walkietalkie.locked,"background":walkietalkie.background,"description": walkietalkie.description},
                 {"name": mushroom.name, "idle": mushroom.idle, "hover": mushroom.hover , "locked":mushroom.locked, "background":mushroom.background,"description": mushroom.description},
-                {"idle": "btn_croissant_default.png", "hover": "aut_it_mapleleaf.png", "background":"frame_mapleleaf.png","description": "A gift from the grateful villagers, crafted locally with the utmost care. Its exquisite aroma tantalizes the senses, promising a sweet indulgence unparalleled by any other maple syrup aficionado."},
-                {"idle": "6.png", "hover": "5.png", "description": "Item 5 description"},
-                {"idle": "6.png", "hover": "5.png", "description": "Item 6 description"},
+                {"name": mapleleaf.name, "idle": mapleleaf.idle, "hover": mapleleaf.hover , "locked":mapleleaf.locked, "background":mapleleaf.background,"description": mapleleaf.description},
+                {"name": croissant.name, "idle": croissant.idle, "hover": croissant.hover, "locked": croissant.locked, "background":croissant.background,"description":"This is item 7"},
+                {"name": drink.name, "idle": drink.idle, "hover": drink.hover, "locked": drink.locked, "background":drink.background,"description":"This is item 8"},
+                {"name": takoyaki.name, "idle": takoyaki.idle, "hover": takoyaki.hover, "locked": takoyaki.locked, "background":takoyaki.background,"description":"This is item 9"},
+                {"name": walkietalkie.name, "idle": walkietalkie.idle, "hover": walkietalkie.hover, "locked":walkietalkie.locked,"background":walkietalkie.background,"description": "This is item 10"},
+                {"name": mushroom.name, "idle": mushroom.idle, "hover": mushroom.hover , "locked":mushroom.locked, "background":mushroom.background,"description": "This is item 11"},
+                {"name": mapleleaf.name, "idle": mapleleaf.idle, "hover": mapleleaf.hover , "locked":mapleleaf.locked, "background":mapleleaf.background,"description": "This is item 12"},
+                {"name": croissant.name, "idle": croissant.idle, "hover": croissant.hover, "locked": croissant.locked, "background":croissant.background,"description":"This is item 13"},
+                {"name": drink.name, "idle": drink.idle, "hover": drink.hover, "locked": drink.locked, "background":drink.background,"description":"This is item 14"},
+                {"name": takoyaki.name, "idle": takoyaki.idle, "hover": takoyaki.hover, "locked": takoyaki.locked, "background":takoyaki.background,"description":"This is item 15"},
             ],
             "tab2": [
                 {"idle": "6.png", "hover": "5.png", "description": "Item 1 description"},
