@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 295, in script
+    init python:
+  File "game/script.rpy", line 366, in <module>
+    {"name": mushroom.name, "idle": mushroom.idle, "hover": mushroom.hover , "locked":msuhroom.locked, "background":mushroom.background,"description": mushroom.description},
+NameError: name 'msuhroom' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 295, in script
+    init python:
+  File "/Applications/renpy-8.2.1-sdk/renpy/ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-8.2.1-sdk/renpy/python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 366, in <module>
+    {"name": mushroom.name, "idle": mushroom.idle, "hover": mushroom.hover , "locked":msuhroom.locked, "background":mushroom.background,"description": mushroom.description},
+NameError: name 'msuhroom' is not defined
+
+macOS-11.5.1-arm64-arm-64bit arm64
+Ren'Py 8.2.1.24030407
+test_aut_ver01_EN 1.0
+Fri May 17 03:23:32 2024
